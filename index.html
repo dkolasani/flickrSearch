@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html> 
+<head>
+ <title></title>
+</head> 
+ <body ng-app="app"> 
+   <form name="flickr">
+ <div ng-controller="AppCtrl as vm">
+   <Span>  <input type="text" name="search_tag" ng-model="vm.search_tag" placeholder="search here" required/> </span>
+    <span ng-show="flickr.search_tag.$invalid" >The input field is required</span>
+   
+   <button type="submit" ng-click="vm.submit()">Submit</button>
+    <div ng-if="vm.startSearching">
+      Searching for photos
+      </div>
+   <div ng-if="vm.data.length >0">
+<span> you found </span>{{vm.data.length}}
+<div ng-repeat="photo in vm.data">
+     <img ng-src='https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg'>
+</img>
+   </div></div> </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js"></script>
+      <script src="script.js"></script>
+      </form>
+ </body>
+ </html>
